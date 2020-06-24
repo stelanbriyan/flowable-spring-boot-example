@@ -1,13 +1,18 @@
 
+#spring:
+#  datasource:
+#    url: jdbc:mysql://database-1.cs4yfm1jsjxp.us-east-1.rds.amazonaws.com:3306/flowable-spring-boot?useUnicode=true&characterEncoding=utf8&useSSL=false&relaxAutoCommit=true
+#    username: root
+#    password: admin1234
+
 spring:
   datasource:
-    url: jdbc:mysql://database-1.cs4yfm1jsjxp.us-east-1.rds.amazonaws.com:3306/flowable-spring-boot?useUnicode=true&characterEncoding=utf8&useSSL=false&relaxAutoCommit=true
+    url: jdbc:mysql://localhost:3306/flowable-spring-camel?useUnicode=true&characterEncoding=utf8&useSSL=false&relaxAutoCommit=true
     username: root
-    password: admin1234
-
+    password: admin
 
 flowable:
-  database-schema-update: false
+  database-schema-update: true
   rest-api-enabled: true
 
 server:

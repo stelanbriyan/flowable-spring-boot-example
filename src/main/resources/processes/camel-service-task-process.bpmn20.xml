@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <process id="CamelVariableTransmission" name="CamelVariableTransmission" isExecutable="true">
+        <startEvent id="startEvent1"></startEvent>
+
+        <sequenceFlow id="sid-5D4FCE03-981A-4E93-91A1-02ECD6046D41" sourceRef="startEvent1"
+                      targetRef="sid-79D5FE99-60CA-424F-AAD3-7ABBA577BCBB"></sequenceFlow>
+
+        <serviceTask id="sid-79D5FE99-60CA-424F-AAD3-7ABBA577BCBB" name="Initialise Variables"
+                     flowable:class="org.flowable.examples.spring.boot.camel.InitialiseVariables"></serviceTask>
+
+        <sequenceFlow id="sid-2B35BD26-8861-45FC-9A19-B83F5D4A72F2" sourceRef="sid-79D5FE99-60CA-424F-AAD3-7ABBA577BCBB"
+                      targetRef="ping"></sequenceFlow>
+
+        <serviceTask id="ping" name="Send Variable" flowable:type="camel"></serviceTask>
+
+        <sequenceFlow id="sid-F08E2B38-EC21-478A-ACAF-938027455F6D" sourceRef="ping"
+                      targetRef="saveOutput"></sequenceFlow>
+
+        <serviceTask id="saveOutput" name="Save Variable Output"
+                     flowable:class="org.flowable.examples.spring.boot.camel.SaveOutput"></serviceTask>
+
+        <sequenceFlow id="sid-D7FEDCBA-C1BE-4FC0-9C4F-CF1642C3D2CF" sourceRef="saveOutput"
+                      targetRef="sid-490A8527-1FAD-4E60-B2CB-F395781A048D"></sequenceFlow>
+
+        <endEvent id="sid-490A8527-1FAD-4E60-B2CB-F395781A048D"></endEvent>
+    </process>
+</definitions>

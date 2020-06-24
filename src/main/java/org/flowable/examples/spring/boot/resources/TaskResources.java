@@ -73,7 +73,7 @@ public class TaskResources {
         Map<String, Object> values = new HashMap<>();
         values.put("name", null);
 
-        ProcessInstance serviceTaskProcess = runtimeService.startProcessInstanceByKey("serviceTaskProcess", values);
+        ProcessInstance serviceTaskProcess = runtimeService.startProcessInstanceByKey("CamelVariableTransmission");
 
         log.info("process instance: {}", serviceTaskProcess.getProcessInstanceId());
     }
